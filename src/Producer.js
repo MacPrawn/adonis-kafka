@@ -21,9 +21,10 @@ class Producer {
     if (typeof data !== "object") {
       throw new Error("You need send a json object in data argument");
     }
+    if(!Array.isArray(data)) data = [data]
 
     await this.producer.send({
-      topic: "test-topic",
+      topic,
       messages: data
     });
 
